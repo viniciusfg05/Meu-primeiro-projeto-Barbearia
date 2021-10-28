@@ -242,9 +242,7 @@ nav.show .menu ul {
 }
 
 .section {
-  padding: calc(1
-rem
-+ var(--header-height)) 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
@@ -590,6 +588,10 @@ footer .social a:hover {
     margin-right: auto; /*Complemento da "max-width", define as margens laterais para automatico*/
   }
 
+  .section {
+    padding-top: calc(5rem + var(--header-height)) 0;
+  }
+  
   /*HOME*/
 
   #home .container {
@@ -729,12 +731,24 @@ footer .social a:hover {
     overflow-y: scroll;
   }
 
+  #home h2 {
+    font-size: 1.5rem;
+  }
+
+  #about h2 {
+    font-size: 2rem;
+  }
+
+  #services h2 {
+    font-size: 2rem;
+  }
+
   logo {
     font: 300;
   }
 
   .section {
-    padding: 3rem;
+    padding-top: 6rem;
   }
 
   html {
