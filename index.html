@@ -27,7 +27,7 @@
     />
   </head>
   <body>
-    <header id="header" class="scroll">
+    <header id="header">
       <!--Torna esse Header unico-->
       <nav class="container">
         <!--add para ter elemementos de cliques-->
@@ -49,7 +49,7 @@
     <main>
       <!--================HOME================-->
       <section class="section" id="home">
-        <div class="container">
+        <div class="container grid">
           <div class="image">
             <img
               src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
@@ -223,6 +223,27 @@
                   </cite>
                 </blockquote>
               </div>
+
+              <div class="testimonials swiper-slide">
+                <blockquote>
+                  <!--Para citar alguem-->
+                  <p>
+                    <span>&ldquo;</span>
+                    <!--"&ldquo;" faz um aspas diferente-->
+                    Eu sou cliente do Beautysalon há 5 anos e não troco por
+                    nada! Certamente meu cabelo mudou muito depois que comecei a
+                    tratar somente com produtos naturais e veganos. São
+                    profissionais incríveis e qualificados.
+                  </p>
+                  <cite>
+                    <img
+                      src="assets/fotos/Luana Marcal.jpg"
+                      alt="Foto de Luana Marçal"
+                    />
+                    Luana Marçal
+                  </cite>
+                </blockquote>
+              </div>
             </div>
 
             <!-- If we need pagination -->
@@ -268,13 +289,11 @@
     <div class="divider-3"></div>
 
     <footer class="section">
-      <div class="container">
+      <div class="container grid">
         <div class="brand">
           <a class="logo logo-alt" href="#home">Barbearia<span>União</span>.</a>
           <p>©2021 Beautysalon.</p>
           <p>Todos os direitos reservados.</p>
-        </div>
-
         </div>
       </div>
 
@@ -284,7 +303,8 @@
         <a href="https://www.youtube.com" target="_blank"><i class="icon-youtube"></i></a>
       </div>
     </footer>
-   
+
+    <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
 
     <!-- swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -296,3 +316,4 @@
     <script src="main.js"></script>
   </body>
 </html>
+

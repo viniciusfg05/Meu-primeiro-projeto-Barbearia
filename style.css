@@ -51,6 +51,11 @@ body {
   --text-color: hsl(0 0% 46%);
   --text-color-light: hsl(0 0% 98%);
   --body-color: hsl(0 0% 98%);
+
+  /*fontes*/
+
+  --title-font-size: 2.25rem;
+  --subtile-font-size: 1rem;
 }
 
 .button {
@@ -164,7 +169,9 @@ nav ul li a {
   position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
+  /*Apos a conclusao do codigo JS, temos que add ccs no elemente, "nav ul li a.active"*/
   color: var(--base-color);
 }
 
@@ -181,7 +188,9 @@ nav ul li a::after {
   transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  /*Apos a conclusao do codigo JS, temos que add ccs no elemente, "nav ul li a.active::after"*/
   width: 100%;
 }
 
@@ -232,11 +241,15 @@ nav.show .menu ul {
   gap: 2rem;
 }
 .section {
-  padding: 5rem 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
   margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtile-font-size);
 }
 
 .section header {
@@ -403,10 +416,10 @@ nav.show div.icon-close {
   background: white;
 }
 
-#testimonials .container {
-  margin-right: 0;
-  margin-left: 0;
+#testimonials .title {
+  text-align: center;
 }
+
 #testimonials header {
   margin-right: 1.5rem;
   margin-left: 1.5rem;
@@ -450,13 +463,13 @@ nav.show div.icon-close {
 
 /*===SWIPER===*/
 
-.swiper-slide {
-  height: auto;
-  padding: 1rem 1rem;
-}
-
 .swiper-pagination {
   position: relative;
+}
+
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1rem;
 }
 
 .swiper-pagination-bullet {
@@ -525,7 +538,218 @@ footer i {
   font-size: 1.5rem;
 }
 
-footer .social {
-  margin-right: 2rem;
+footer .social a {
+  margin-right: 1rem;
   margin-top: 2rem;
+
+  display: inline-block;
+  transition: 0.3s;
+}
+
+footer .social a:hover {
+  transform: translateY(-15px);
+}
+
+/*Voltar ao topo */
+
+.back-to-top {
+  background: var(--base-color);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.3rem;
+  clip-path: circle();
+
+  font-size: 1rem;
+  line-height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translateY(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/*Midia Querie*/
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px; /*Aqui, define o tamanho heade, barra do menu. Para ficar alinhado ao centro*/
+    margin-left: auto; /*Complemento da "max-width", define as margens laterais para automatico*/
+    margin-right: auto; /*Complemento da "max-width", define as margens laterais para automatico*/
+  }
+
+  /*HOME*/
+
+  #home .container {
+    grid-auto-flow: column; /*com o "grid" na class, ele deixa os intens em coluna*/
+    justify-content: space-between;
+    margin: 0 auto; /*Deixa a margem vestica "0" e a Laterais "automatica", deixando os intens alinhados*/
+  }
+
+  .logo {
+    font-size: 2.25rem;
+  }
+
+  #home h2 {
+    font-size: 2rem;
+  }
+
+  #home .image {
+    order: 1; /* Define a ordem dos intens na class */
+    max-width: 35rem;
+    margin-right: 4.43rem;
+  }
+
+  #home .text {
+    order: 0; /* Define as ordens dos intens na class */
+    margin: 0;
+    text-align: left; /* alinhamento do texto a esquerda */
+  }
+
+  /*NAV*/
+
+  nav .container {
+    margin-left: 0px;
+  }
+
+  nav .menu {
+    visibility: visible; /* COMO ESTAVA INVISIVEL PARA TELA MENOR, TEMOS QUE TORNA-LO VISIVEL NOVAMENTE */
+    opacity: 1; /* COMPLEMENTO DA ANTERIOR, OPACIDADE DEVE VOLTAR PARA "1" */
+    top: 0; /* O "top" estava -20, temos que voltar para o ponto de origem */
+  }
+
+  nav .menu ul {
+    display: flex; /* "display" do nav, estava "none" (invisivel), temos que voltar para flex (ficando visivel e ium ao lado do outro */
+  }
+
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-font); /* Define a fonte do menu */
+    font-size: 1.25rem; /* Define o tamanho do menu */
+  }
+
+  nav .icon-menu {
+    display: none; /* Some com o icone de menu, assim o menu se alinha automatico para o conto*/
+  }
+  /*ABOUT*/
+
+  #about .container {
+    grid-auto-flow: column; /*com o "grid" na class, ele deixa os intens em coluna*/
+    justify-content: space-between;
+    margin: 0 auto; /*Deixa a margem vestica "0" e a Laterais "automatica", deixando os intens alinhados*/
+  }
+
+  #about h2 {
+    font-size: 2rem;
+  }
+
+  #about .text {
+    margin: 0;
+  }
+
+  #about .image {
+    max-width: 35rem;
+    margin-right: 4.43rem;
+  }
+
+  #about .image::before {
+    /*este elemento faz um objeto da imagem, deixando com sobra de um imagem existente*/
+    content: '';
+    height: 21.25rem;
+    width: 100%;
+    background: var(--base-color-second);
+    position: absolute;
+    top: -8.3%;
+    left: -33%;
+    z-index: 0;
+  }
+
+  #services header {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1.3fr 1fr;
+  }
+
+  /*contact*/
+
+  #contact .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  #contact .text {
+    max-width: 25rem;
+  }
+
+  #contact links {
+    max-width: 25rem;
+  }
+
+  /*footer*/
+
+  footer.section {
+    padding: 3rem 0;
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  footer .container {
+  }
+
+  footer .logo {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 360px) {
+  :root {
+    --title-font-size: 2.25rem; /* variavel */
+    --subtile-font-size: 1.25rem; /* variavel */
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  html {
+    width: 100vw;
+  }
+  body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  }
+
+  }
+  #header {
+    width: 100vw;
+  }
+
+  #home {
+    width: 100vw;
+  }
+  #about {
+    width: 100vw;
+  }
+  #services {
+    width: 100vw;
+  }
+
+  #testimoniols {
+    width: 100vw;
+  }
 }
