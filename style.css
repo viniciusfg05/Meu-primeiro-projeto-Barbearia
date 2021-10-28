@@ -240,8 +240,11 @@ nav.show .menu ul {
   display: grid;
   gap: 2rem;
 }
+
 .section {
-  padding: calc(5rem + var(--header-height)) 0;
+  padding: calc(1
+rem
++ var(--header-height)) 0;
 }
 
 .section .title {
@@ -726,9 +729,18 @@ footer .social a:hover {
     overflow-y: scroll;
   }
 
+  logo {
+    font: 300;
+  }
+
+  .section {
+    padding: 3rem;
+  }
+
   html {
     width: 100vw;
   }
+
   body {
   overflow-x: hidden;
   overflow-y: scroll;
