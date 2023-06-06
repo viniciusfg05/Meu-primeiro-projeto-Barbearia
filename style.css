@@ -157,7 +157,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center; /*alinhamento*/
-  scale: 8;
 }
 
 nav ul li {
